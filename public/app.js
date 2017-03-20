@@ -25339,17 +25339,40 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _NewListInformation = require('./components/NewListInformation');
+
+var _NewListInformation2 = _interopRequireDefault(_NewListInformation);
+
+var _UniqueList = require('./components/UniqueList');
+
+var _UniqueList2 = _interopRequireDefault(_UniqueList);
+
+var _Footer = require('./components/Footer');
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 var _reactRouter = require('react-router');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import ListItem from './components/ListItem';
 
-console.log('it works');
+
+var config = {
+    apiKey: "AIzaSyBF3ftlSxCKxCTfDSc0izLm2X3lBr-t3Rk",
+    authDomain: "listshare-10261.firebaseapp.com",
+    databaseURL: "https://listshare-10261.firebaseio.com",
+    storageBucket: "listshare-10261.appspot.com",
+    messagingSenderId: "488015495405"
+};
+firebase.initializeApp(config);
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -25357,20 +25380,107 @@ var App = function (_React$Component) {
     function App() {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+        _this.state = {
+            listTitle: "",
+            listInstructions: "",
+            listKey: ""
+        };
+
+        _this.addList = _this.addList.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
+
+        return _this;
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var dbRef = firebase.database().ref();
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            // console.log(this);
+            this.setState(_defineProperty({}, e.target.name, e.target.value));
+        }
+    }, {
+        key: 'addList',
+        value: function addList(e) {
+            e.preventDefault();
+            console.log("list added");
+            var newList = {
+                listTitle: this.state.listTitle,
+                listInstructions: this.state.listInstructions,
+                listKey: this.state.listKey
+            };
+            console.log(newList);
+
+            // storing this new object in firebase
+            var dbRef = firebase.database().ref();
+            var reference = dbRef.push(newList);
+            var listKey = reference.getKey();
+            this.setState({
+                listKey: listKey
+            });
+            console.log(listKey);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'fullbleed' },
                 _react2.default.createElement(
-                    'h1',
+                    'header',
                     null,
-                    'ListShare'
-                )
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'contentWrapper' },
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            'list share'
+                        ),
+                        _react2.default.createElement(
+                            'h2',
+                            { className: 'listInstructions' },
+                            'Some explanation of what the app does.'
+                        ),
+                        _react2.default.createElement(
+                            'form',
+                            { className: 'createList', onSubmit: this.addList },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'createList__section createList__section--name' },
+                                _react2.default.createElement(
+                                    'label',
+                                    { className: 'createList__label', htmlFor: 'listName' },
+                                    'Your List Name:'
+                                ),
+                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'createList__section createList__section--instructions' },
+                                _react2.default.createElement(
+                                    'label',
+                                    { className: 'createList__label', htmlFor: 'listInstructions' },
+                                    'List instructions:'
+                                ),
+                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange })
+                            ),
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'createList__button' },
+                                'Create List!'
+                            )
+                        ),
+                        _react2.default.createElement(_NewListInformation2.default, { data: this.state })
+                    )
+                ),
+                _react2.default.createElement(_Footer2.default, null)
             );
         }
     }]);
@@ -25378,11 +25488,304 @@ var App = function (_React$Component) {
     return App;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+// ReactDOM.render(<App />, document.getElementById('app'));
 
-// ReactDOM.render(
-// <Router path="/" history={browserHistory}>
-// 	<Route path="/${USERS UNIQUE ID}" component= {UniqueList}
-// </Router>, document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(
+    _reactRouter.Router,
+    { history: _reactRouter.browserHistory },
+    _react2.default.createElement(_reactRouter.Route, { path: '/', component: App }),
+    _react2.default.createElement(_reactRouter.Route, { path: '/list/:list_key', component: _UniqueList2.default })
+), document.getElementById('app'));
 
-},{"react":230,"react-dom":46,"react-router":199}]},{},[233]);
+},{"./components/Footer":234,"./components/NewListInformation":236,"./components/UniqueList":237,"react":230,"react-dom":46,"react-router":199}],234:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = Footer;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Footer() {
+	return _react2.default.createElement(
+		'footer',
+		null,
+		_react2.default.createElement(
+			'p',
+			null,
+			'\xA9 Julie White | HackerYou 2017'
+		)
+	);
+}
+
+},{"react":230}],235:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = ListItem;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ListItem(props) {
+	return _react2.default.createElement(
+		'li',
+		null,
+		props.data.item,
+		' - ',
+		props.data.name,
+		' - ',
+		props.data.notes,
+		_react2.default.createElement(
+			'button',
+			{ onClick: function onClick() {
+					return props.remove(props.data);
+				} },
+			'Remove'
+		)
+	);
+}
+
+},{"react":230}],236:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = NewListInformation;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function NewListInformation(props) {
+
+	if (props.data.listKey !== "") {
+		return _react2.default.createElement(
+			'div',
+			null,
+			_react2.default.createElement(
+				'p',
+				null,
+				'You\'ve created a new list called: ',
+				props.data.listTitle
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				'Share this link with your friends to collaborate:'
+			),
+			_react2.default.createElement(
+				_reactRouter.Link,
+				{ to: '/list/' + props.data.listKey },
+				'http://localhost:3000/',
+				props.data.listKey
+			)
+		);
+	} else if (props.data.listTitle === "" && props.data.listInstructions !== "") {
+		return _react2.default.createElement(
+			'div',
+			null,
+			_react2.default.createElement(
+				'p',
+				null,
+				'Please make sure your list has a title!'
+			)
+		);
+	} else {
+		return _react2.default.createElement('div', null);
+	}
+}
+
+// if props.data.listKey is not equal to an empty string
+// show the Link <-- return (<div></div>)
+// else
+// return <div></div>
+// don't show the link
+
+},{"react":230,"react-router":199}],237:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ListItem = require('../components/ListItem.js');
+
+var _ListItem2 = _interopRequireDefault(_ListItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UniqueList = function (_React$Component) {
+	_inherits(UniqueList, _React$Component);
+
+	function UniqueList() {
+		_classCallCheck(this, UniqueList);
+
+		var _this = _possibleConstructorReturn(this, (UniqueList.__proto__ || Object.getPrototypeOf(UniqueList)).call(this));
+
+		_this.state = {
+			items: [],
+			item: "",
+			name: "",
+			notes: ""
+		};
+
+		_this.handleChange = _this.handleChange.bind(_this);
+		_this.addItem = _this.addItem.bind(_this);
+		_this.removeItem = _this.removeItem.bind(_this);
+		return _this;
+	}
+
+	_createClass(UniqueList, [{
+		key: 'handleChange',
+		value: function handleChange(e) {
+			// console.log(this);
+			this.setState(_defineProperty({}, e.target.name, e.target.value));
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			var dbRef = firebase.database().ref();
+			firebase.database().ref('' + this.props.params.list_key).on('value', function (res) {
+				console.log(res.val());
+				var dataFromFirebase = res.val();
+				var eventTitle = dataFromFirebase.listTitle;
+				var eventInstructions = dataFromFirebase.listInstructions;
+				var eventList = dataFromFirebase['items'];
+				console.log(eventList);
+				var itemArray = [];
+
+				for (var itemKey in eventList) {
+					var individualItemKey = eventList[itemKey];
+					console.log(individualItemKey);
+					individualItemKey.key = itemKey;
+					itemArray.push(individualItemKey);
+				}
+
+				_this2.setState({
+					listTitle: eventTitle,
+					listInstructions: eventInstructions,
+					items: itemArray
+				});
+			});
+		}
+	}, {
+		key: 'addItem',
+		value: function addItem(e) {
+			e.preventDefault();
+			var listItem = {
+				item: this.state.item,
+				name: this.state.name,
+				notes: this.state.notes
+			};
+
+			var dbRef = firebase.database().ref();
+			firebase.database().ref(this.props.params.list_key + '/items').push(listItem);
+		}
+	}, {
+		key: 'removeItem',
+		value: function removeItem(itemToRemove) {
+			console.log(itemToRemove);
+			console.log("removed");
+
+			var dbRef = firebase.database().ref(this.props.params.list_key + '/items/' + itemToRemove.key);
+			dbRef.remove();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			return _react2.default.createElement(
+				'section',
+				{ className: 'uniqueList' },
+				_react2.default.createElement(
+					'h2',
+					null,
+					this.state.listTitle
+				),
+				_react2.default.createElement(
+					'h3',
+					null,
+					this.state.listInstructions
+				),
+				_react2.default.createElement(
+					'h4',
+					null,
+					'PS be a doll and only delete your own items from the list'
+				),
+				_react2.default.createElement(
+					'form',
+					{ onSubmit: this.addItem, className: 'addForm' },
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'item' },
+						'Item: '
+					),
+					_react2.default.createElement('input', { type: 'text', name: 'item', onChange: this.handleChange }),
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'name' },
+						'Name: '
+					),
+					_react2.default.createElement('input', { type: 'text', name: 'name', onChange: this.handleChange }),
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'notes' },
+						'Notes:'
+					),
+					_react2.default.createElement('input', { type: 'text', name: 'notes', onChange: this.handleChange }),
+					_react2.default.createElement(
+						'button',
+						null,
+						'Add Item'
+					)
+				),
+				_react2.default.createElement(
+					'ul',
+					{ className: 'itemsOnList' },
+					this.state.items.map(function (item) {
+						return _react2.default.createElement(_ListItem2.default, { data: item, remove: _this3.removeItem, key: item.key });
+					})
+				)
+			);
+		}
+	}]);
+
+	return UniqueList;
+}(_react2.default.Component);
+
+exports.default = UniqueList;
+
+},{"../components/ListItem.js":235,"react":230}]},{},[233]);
