@@ -5,21 +5,13 @@ export default function NewListInformation(props) {
 
 	if (props.data.listKey !== "" ) {
 		return (
-			<div>
+			<div className="listInformation">
 				<p>You've created a new list called: {props.data.listTitle}</p>	            
 				<p>Share this link with your friends to collaborate:</p>
-        		<Link to={`/list/${props.data.listKey}`}>http://localhost:3000/{props.data.listKey}</Link>
+        		<Link className="listLink" to={`/list/${props.data.listKey}`}>http://localhost:3000/{props.data.listKey}</Link>
     		</div>  
     	)
     } 
-
-    else if (props.data.listTitle === "" && props.data.listInstructions !== "") {
-    	return (
-    		<div>
-    			<p>Please make sure your list has a title!</p>
-    		</div>
-    	)
-	}
 
 	else {
 		return <div></div>	

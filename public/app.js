@@ -25441,12 +25441,12 @@ var App = function (_React$Component) {
                         _react2.default.createElement(
                             'h1',
                             null,
-                            'list share'
+                            'List Share'
                         ),
                         _react2.default.createElement(
                             'h2',
                             { className: 'listInstructions' },
-                            'Some explanation of what the app does.'
+                            'Make a list and collab with your friends, I dare you.'
                         ),
                         _react2.default.createElement(
                             'form',
@@ -25459,7 +25459,7 @@ var App = function (_React$Component) {
                                     { className: 'createList__label', htmlFor: 'listName' },
                                     'Your List Name:'
                                 ),
-                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange })
+                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange, required: true, autoComplete: 'off' })
                             ),
                             _react2.default.createElement(
                                 'div',
@@ -25469,12 +25469,12 @@ var App = function (_React$Component) {
                                     { className: 'createList__label', htmlFor: 'listInstructions' },
                                     'List instructions:'
                                 ),
-                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange })
+                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange, autoComplete: 'off' })
                             ),
                             _react2.default.createElement(
                                 'button',
                                 { className: 'createList__button' },
-                                'Create List!'
+                                'Create List'
                             )
                         ),
                         _react2.default.createElement(_NewListInformation2.default, { data: this.state })
@@ -25577,7 +25577,7 @@ function NewListInformation(props) {
 	if (props.data.listKey !== "") {
 		return _react2.default.createElement(
 			'div',
-			null,
+			{ className: 'listInformation' },
 			_react2.default.createElement(
 				'p',
 				null,
@@ -25591,19 +25591,9 @@ function NewListInformation(props) {
 			),
 			_react2.default.createElement(
 				_reactRouter.Link,
-				{ to: '/list/' + props.data.listKey },
+				{ className: 'listLink', to: '/list/' + props.data.listKey },
 				'http://localhost:3000/',
 				props.data.listKey
-			)
-		);
-	} else if (props.data.listTitle === "" && props.data.listInstructions !== "") {
-		return _react2.default.createElement(
-			'div',
-			null,
-			_react2.default.createElement(
-				'p',
-				null,
-				'Please make sure your list has a title!'
 			)
 		);
 	} else {
