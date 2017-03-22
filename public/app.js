@@ -25362,8 +25362,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import ListItem from './components/ListItem';
-
 
 var config = {
     apiKey: "AIzaSyBF3ftlSxCKxCTfDSc0izLm2X3lBr-t3Rk",
@@ -25434,46 +25432,46 @@ var App = function (_React$Component) {
                 { className: 'fullbleed' },
                 _react2.default.createElement(
                     'header',
-                    null,
+                    { className: 'createList' },
                     _react2.default.createElement(
                         'div',
                         { className: 'contentWrapper' },
                         _react2.default.createElement(
                             'h1',
-                            null,
+                            { className: 'title createList__title' },
                             'List Share'
                         ),
                         _react2.default.createElement(
                             'h2',
-                            { className: 'listInstructions' },
+                            { className: 'subtitle createList__subtitle' },
                             'Make a list and collab with your friends, I dare you.'
                         ),
                         _react2.default.createElement(
                             'form',
-                            { className: 'createList', onSubmit: this.addList },
+                            { className: 'form createList__form', onSubmit: this.addList },
                             _react2.default.createElement(
                                 'div',
                                 { className: 'createList__section createList__section--name' },
                                 _react2.default.createElement(
                                     'label',
-                                    { className: 'createList__label', htmlFor: 'listName' },
+                                    { className: 'label createList__label createList__label--first', htmlFor: 'listName' },
                                     'Your List Name:'
                                 ),
-                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange, required: true, autoComplete: 'off' })
+                                _react2.default.createElement('input', { className: 'input createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange, required: true, autoComplete: 'off' })
                             ),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'createList__section createList__section--instructions' },
                                 _react2.default.createElement(
                                     'label',
-                                    { className: 'createList__label', htmlFor: 'listInstructions' },
-                                    'List instructions:'
+                                    { className: 'label createList__label', htmlFor: 'listInstructions' },
+                                    'List Instructions:'
                                 ),
-                                _react2.default.createElement('input', { className: 'createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange, autoComplete: 'off' })
+                                _react2.default.createElement('input', { className: 'input createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange, autoComplete: 'off' })
                             ),
                             _react2.default.createElement(
                                 'button',
-                                { className: 'createList__button' },
+                                { className: 'button createList__button' },
                                 'Create List'
                             )
                         ),
@@ -25524,14 +25522,14 @@ function Footer() {
 }
 
 },{"react":230}],235:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = ListItem;
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -25539,19 +25537,42 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function ListItem(props) {
 	return _react2.default.createElement(
-		'li',
-		null,
-		props.data.item,
-		' - ',
-		props.data.name,
-		' - ',
-		props.data.notes,
+		"div",
+		{ className: "uniqueList__itemContainer" },
 		_react2.default.createElement(
-			'button',
-			{ onClick: function onClick() {
-					return props.remove(props.data);
-				} },
-			'Remove'
+			"li",
+			{ className: "uniqueList__listItem" },
+			_react2.default.createElement(
+				"div",
+				{ className: "listItem__item" },
+				_react2.default.createElement(
+					"div",
+					{ className: "posterItem" },
+					props.data.item,
+					" "
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "posterName" },
+					props.data.name
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "posterNotes" },
+					props.data.notes
+				)
+			),
+			_react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(
+					"button",
+					{ className: "listItem__remove", onClick: function onClick() {
+							return props.remove(props.data);
+						} },
+					"Remove"
+				)
+			)
 		)
 	);
 }
@@ -25582,7 +25603,11 @@ function NewListInformation(props) {
 				'p',
 				null,
 				'You\'ve created a new list called: ',
-				props.data.listTitle
+				_react2.default.createElement(
+					'span',
+					{ className: 'listInformation__bold' },
+					props.data.listTitle
+				)
 			),
 			_react2.default.createElement(
 				'p',
@@ -25624,6 +25649,10 @@ var _ListItem = require('../components/ListItem.js');
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
+var _Footer = require('../components/Footer.js');
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -25658,7 +25687,6 @@ var UniqueList = function (_React$Component) {
 	_createClass(UniqueList, [{
 		key: 'handleChange',
 		value: function handleChange(e) {
-			// console.log(this);
 			this.setState(_defineProperty({}, e.target.name, e.target.value));
 		}
 	}, {
@@ -25668,21 +25696,20 @@ var UniqueList = function (_React$Component) {
 
 			var dbRef = firebase.database().ref();
 			firebase.database().ref('' + this.props.params.list_key).on('value', function (res) {
-				console.log(res.val());
+				// console.log(res.val());
 				var dataFromFirebase = res.val();
 				var eventTitle = dataFromFirebase.listTitle;
 				var eventInstructions = dataFromFirebase.listInstructions;
 				var eventList = dataFromFirebase['items'];
-				console.log(eventList);
+				// console.log(eventList);
 				var itemArray = [];
 
 				for (var itemKey in eventList) {
 					var individualItemKey = eventList[itemKey];
-					console.log(individualItemKey);
+					// console.log(individualItemKey);
 					individualItemKey.key = itemKey;
 					itemArray.push(individualItemKey);
 				}
-
 				_this2.setState({
 					listTitle: eventTitle,
 					listInstructions: eventInstructions,
@@ -25702,13 +25729,16 @@ var UniqueList = function (_React$Component) {
 
 			var dbRef = firebase.database().ref();
 			firebase.database().ref(this.props.params.list_key + '/items').push(listItem);
+
+			this.setState({
+				item: "",
+				name: "",
+				notes: ""
+			});
 		}
 	}, {
 		key: 'removeItem',
 		value: function removeItem(itemToRemove) {
-			console.log(itemToRemove);
-			console.log("removed");
-
 			var dbRef = firebase.database().ref(this.props.params.list_key + '/items/' + itemToRemove.key);
 			dbRef.remove();
 		}
@@ -25718,57 +25748,122 @@ var UniqueList = function (_React$Component) {
 			var _this3 = this;
 
 			return _react2.default.createElement(
-				'section',
-				{ className: 'uniqueList' },
+				'div',
+				{ className: 'fullbleed' },
 				_react2.default.createElement(
-					'h2',
-					null,
-					this.state.listTitle
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					this.state.listInstructions
-				),
-				_react2.default.createElement(
-					'h4',
-					null,
-					'PS be a doll and only delete your own items from the list'
-				),
-				_react2.default.createElement(
-					'form',
-					{ onSubmit: this.addItem, className: 'addForm' },
+					'section',
+					{ className: 'uniqueList' },
 					_react2.default.createElement(
-						'label',
-						{ htmlFor: 'item' },
-						'Item: '
-					),
-					_react2.default.createElement('input', { type: 'text', name: 'item', onChange: this.handleChange }),
-					_react2.default.createElement(
-						'label',
-						{ htmlFor: 'name' },
-						'Name: '
-					),
-					_react2.default.createElement('input', { type: 'text', name: 'name', onChange: this.handleChange }),
-					_react2.default.createElement(
-						'label',
-						{ htmlFor: 'notes' },
-						'Notes:'
-					),
-					_react2.default.createElement('input', { type: 'text', name: 'notes', onChange: this.handleChange }),
-					_react2.default.createElement(
-						'button',
-						null,
-						'Add Item'
+						'div',
+						{ className: 'contentWrapper' },
+						_react2.default.createElement(
+							'h2',
+							{ className: 'title uniqueList__title' },
+							this.state.listTitle
+						),
+						_react2.default.createElement(
+							'h3',
+							{ className: 'subtitle uniqueList__instructions' },
+							this.state.listInstructions
+						),
+						_react2.default.createElement(
+							'h4',
+							{ className: 'removeItemStatement' },
+							'- Only remove your own items from the list, please. -'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'form formContainer' },
+							_react2.default.createElement(
+								'form',
+								{ className: 'uniqueList__form', onSubmit: this.addItem },
+								_react2.default.createElement(
+									'div',
+									{ className: 'uniqueList__formWrapper' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'formContainer--flex' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'uniqueList__form--item' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'uniqueList__labelContainer' },
+												_react2.default.createElement(
+													'label',
+													{ className: 'label uniqueList__label--item', htmlFor: 'item' },
+													'Item:'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'uniqueList__inputContainer' },
+												_react2.default.createElement('input', { className: 'input uniqueList__input--item', type: 'text', name: 'item', onChange: this.handleChange, value: this.state.item, required: true, autoComplete: 'off', placeholder: 'eg. veggies and dip' })
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'uniqueList__form--name' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'uniqueList__labelContainer uniqueList__labelContainer--name' },
+												_react2.default.createElement(
+													'label',
+													{ className: 'label uniqueList__label--name', htmlFor: 'name' },
+													'Name:'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'uniqueList__inputContainer' },
+												_react2.default.createElement('input', { className: 'input uniqueList__input--name', type: 'text', name: 'name', onChange: this.handleChange, value: this.state.name, required: true, autoComplete: 'off', placeholder: 'eg. Julie White' })
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'formContainer--flex' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'uniqueList__form--notes' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'uniqueList__labelContainer--larger' },
+												_react2.default.createElement(
+													'label',
+													{ className: 'label uniqueList__label--notes', htmlFor: 'notes' },
+													'Notes:'
+												)
+											),
+											_react2.default.createElement(
+												'div',
+												{ className: 'uniqueList__inputContainer--larger' },
+												_react2.default.createElement('input', { className: 'input uniqueList__input--notes', type: 'text', name: 'notes', onChange: this.handleChange, value: this.state.notes, autoComplete: 'off', placeholder: 'eg. for a snack' })
+											)
+										)
+									),
+									_react2.default.createElement(
+										'button',
+										{ className: 'button uniqueList__button' },
+										'Add Item'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'listWrapper' },
+									_react2.default.createElement(
+										'ul',
+										{ className: 'uniqueList__ul' },
+										this.state.items.map(function (item) {
+											return _react2.default.createElement(_ListItem2.default, { data: item, remove: _this3.removeItem, key: item.key });
+										})
+									)
+								)
+							)
+						)
 					)
 				),
-				_react2.default.createElement(
-					'ul',
-					{ className: 'itemsOnList' },
-					this.state.items.map(function (item) {
-						return _react2.default.createElement(_ListItem2.default, { data: item, remove: _this3.removeItem, key: item.key });
-					})
-				)
+				_react2.default.createElement(_Footer2.default, null)
 			);
 		}
 	}]);
@@ -25778,4 +25873,4 @@ var UniqueList = function (_React$Component) {
 
 exports.default = UniqueList;
 
-},{"../components/ListItem.js":235,"react":230}]},{},[233]);
+},{"../components/Footer.js":234,"../components/ListItem.js":235,"react":230}]},{},[233]);

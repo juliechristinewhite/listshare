@@ -5,55 +5,195 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+/*wrapper*/
 
 .fullbleed {
-	background-color: rgb(90, 95, 111);
+	background-color: white;
 }
 
 .contentWrapper {
-	width: 1000px;
+	max-width: 1000px;
 	margin: 0 auto;
 	background-color: white;
-	height: 100vh;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	min-height: 92vh;
+	padding-bottom: 50px;
 }
 
-header {
+.createList, .uniqueList {
 	max-width: 1300px;
 	text-align: center;
-	color: #FC4B50;
+	color: #05A8AA;
 	font-family: 'Raleway', sans-serif;
 }
 
-h1 {
-	color: #FC4B50;
+/*wrapper end
+
+/*title*/
+
+.title {
+	color: #05A8AA;
 	margin: 0;
-	padding-top: 30px;
+	padding-top: 25px;
 	font-family: 'Catamaran', sans-serif;
+}
+
+.createList__title {
 	font-size: 50px;
 }
 
-.listInstructions {
-	padding-bottom: 20px;
-	font-weight: lighter;
-	font-size: 22px;
+.uniqueList__title {
+	font-size: 35px;
 }
 
-.createList {
-	width: 80%;
+/*title end*/
+
+/*subtitle*/
+
+.subtitle {
+	padding-bottom: 20px;
+	font-weight: lighter;
+}
+
+.createList__subtitle {
+	font-size: 22px;
+	margin-top: 10px;
+}
+
+.uniqueList__instructions {
+	font-size: 18px;
+	padding: 0 115px;
+}
+
+.removeItemStatement {
+	color: #A9A9A9;
+	font-style: italic;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+
+/*subtitle end*/
+
+/*form*/
+
+.form {
+	padding: 20px 0;
+	width: 90%;
 	margin: 0 auto;
-	border: 2px solid #FC4B50;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	color: white;
+}
+
+.createList__form {
+	background-color: #616876;
+}
+
+.formContainer {
+	color: rgb(90, 95, 111);
+	margin-top: 30px;
+}
+
+.formContainer--flex {
+	display: flex;
+}
+
+.uniqueList__formWrapper {
+	padding: 50px;
+	background-color: #616876;
+	color: white;
+}
+
+.uniqueList__form--item {
+	/*border: 1px solid black;*/
+	display: flex;
+	width: 50%;
+}
+
+.uniqueList__form--name {
+	/*border: 1px solid black;*/
+	display: flex;
+	width: 50%;
+}
+
+.uniqueList__form--notes {
+	/*border: 1px solid black;*/
+	display: flex;
+	width: 100%;
+	margin-top: 20px;
+}
+
+/*form end*/
+
+/*label*/
+
+.label {
+	font-weight: lighter;
+	letter-spacing: 0.5px;
+	padding: 4px 10px 4px 10px;
+	margin-right: 15px;
+}
+
+.createList__label {
+	font-size: 20px;
+}
+
+.uniqueList__labelContainer {
+	width: 20%;
+	padding-top: 7px;
+}
+
+.uniqueList__labelContainer--name {
+	width: 23%;
+}
+
+.uniqueList__labelContainer--larger {
+	width: 10%;
+	padding-top: 7px;
+}
+
+.uniqueList__label--item, .uniqueList__label--name {
+	padding-left: 0;
+}
+
+.uniqueList__label--notes {
+	padding-left: 0;
+}
+
+/*label end*/
+
+/*input*/
+
+.input {
+	padding: 7px;
+	letter-spacing: 0.5px;
+	font-family: 'Raleway', sans-serif;
+	color: #4B9489;
 }
 
 .createList__input {
 	width: 60%;
-	padding: 7px;
 	font-size: 20px;
-	letter-spacing: 0.5px;
-	font-family: 'Raleway', sans-serif;
-	color: #FC4B50;
 }
+
+.createList__section--instructions .createList__input {
+	padding-bottom: 40px;
+}
+
+.uniqueList__inputContainer {
+	width: 77%;
+}
+
+.uniqueList__inputContainer--larger {
+	width: 90%;
+}
+
+.uniqueList__input--item, .uniqueList__input--name {
+	width: 100%;
+}
+
+.uniqueList__input--notes {
+	width: 100%;
+}
+
+/*input end*/
 
 .createList__section {
 	padding-top: 20px;
@@ -64,38 +204,217 @@ h1 {
 	padding-top: 0;
 }
 
-.createList__section--instructions .createList__input {
-	padding-bottom: 65px;
-}
+/*button*/
 
-.createList__label {
-	font-weight: lighter;
-	letter-spacing: 0.5px;
-	font-size: 20px;
-	padding: 4px 10px 4px 10px;
-	margin-right: 15px;
-}
-
-.createList__button {
+.button {
 	padding: 10px 20px;
 	letter-spacing: 1px;
 	font-weight: lighter;
 	font-size: 18px;
 	border: none;
-	background-color: #FC4B50;
+	background-color: #05A8AA;
 	color: white;
 	margin-bottom: 20px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.uniqueList__button {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.uniqueList__button button {
+	background-color: white;
+	color: rgb(90, 95, 111);
+}
+
+.listItem__remove {
+	margin-top: 15px;
+	font-size: 13px;
+	background-color: white;
+	border: 1px solid #05A8AA;
+	color: #05A8AA;
+	padding: 7px 10px;
+	letter-spacing: 1px;
+}
+
+.listItem__remove:hover {
+	background-color: #05A8AA;
+	border: none;
+	color: white;
+}
+
+/*button end*/
+
+/*list information pop up*/
+
 .listInformation {
-	border: 2px solid #FC4B50;
+	border: 1px solid #616876;
+	letter-spacing: 0.5px;
+	font-weight: lighter;
+	font-size: 20px;
 	width: 75%;
 	margin: 0 auto;
 	margin-top: 20px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	padding: 20px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	color: #616876;
+}
+
+.listInformation p:first-of-type {
+	margin-top: 0;
+}
+
+.listInformation__bold {
+	font-weight: bolder;
+	font-size: 25px;
+	color: #05A8AA;
 }
 
 .listLink {
-	padding-bottom: 20px;
+	color: #05A8AA;
+	font-weight: bold;
 }
+
+/*list information pop up end*/
+
+/*unique list user input*/
+
+.listWrapper {
+	margin: 0 auto;
+	padding-left: 0;
+}
+
+.uniqueList__listItem {
+	list-style-type: none;
+	padding-left: 0;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+	padding-left:0;
+}
+
+.uniqueList__itemContainer {
+	margin-top: 30px;
+	padding: 10px 20px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	width: 100%;
+	border: 1px solid #A9A9A9;;
+}
+
+.uniqueList__ul {
+	padding-left: 0;
+	margin-left: 0;
+}
+
+.listItem__item {
+	padding-left: 0;
+}
+
+.posterItem {
+	font-weight: lighter;
+	padding-bottom: 3px;
+}
+
+.posterName {
+	font-weight: bold;
+	padding-bottom: 3px;
+}
+
+.posterNotes {
+	font-style: italic;
+	color: #A9A9A9;
+}
+
+/*unique list user input*/
+
+/*footer*/
+
+footer {
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	color: #616876;
+}
+
+/*footer end*/
+
+/*responsive */
+
+@media (max-width: 800px) {
+	.formContainer--flex {
+		flex-direction: column;
+	}
+	.uniqueList__form--name {
+		margin-top: 20px;
+	}
+	.uniqueList__labelContainer--name {
+		width: 20%;
+	}
+	.uniqueList__form--item, .uniqueList__form--name {
+		width: 100%;
+	}
+	.uniqueList__labelContainer {
+		text-align: left;
+	}
+	.uniqueList__inputContainer {
+		width: 100%;
+	}
+	.uniqueList__labelContainer--larger {
+		width: 20%;
+		text-align: left
+	}
+	.uniqueList__inputContainer--larger {
+		width: 100%;
+	}
+}
+
+@media (max-width: 730px) {
+	.uniqueList__form--name, .uniqueList__form--item, .uniqueList__form--notes {
+		flex-direction: column;
+	}
+	.uniqueList__labelContainer, .uniqueList__labelContainer--larger  {
+		background-color: #05A8AA;
+		color: white;
+		width: 65px;
+		padding-left: 5px;
+		padding-bottom: 5px;
+		font-weight: bold;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	}
+	.uniqueList__instructions {
+		padding: 0 60px;
+	}
+}
+
+@media (max-width: 490px) {
+	.uniqueList__formWrapper {
+		padding: 30px;
+		/*width: 90%;*/
+	}
+	.listItem__remove {
+		margin-top: 0;
+	}
+	.uniqueList__itemContainer {
+		padding: 10px;
+	}
+	.formContainer {
+		padding: 30px;
+		margin-top: 0;
+		/*width: 90%;*/
+	}
+	.subtitle {
+		padding: 0 40px;
+	}
+	.removeItemStatement {
+		padding-right: 50px;
+		padding-left: 50px;
+		margin-bottom: 0;
+	}
+	.title {
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+}
+
+/*responsive end*/

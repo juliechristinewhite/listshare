@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import NewListInformation from './components/NewListInformation';
 import UniqueList from './components/UniqueList';
-// import ListItem from './components/ListItem';
 import Footer from './components/Footer';
 import { Router, Route, browserHistory } from 'react-router';
 
@@ -59,20 +58,20 @@ class App extends React.Component {
     render() {
         return (
             <div className="fullbleed">
-            	<header>
+            	<header className="createList">
                     <div className="contentWrapper">
-    	                <h1>List Share</h1>
-    	                <h2 className="listInstructions">Make a list and collab with your friends, I dare you.</h2>
-                        <form className="createList" onSubmit={this.addList} >
+    	                <h1 className="title createList__title">List Share</h1>
+    	                <h2 className="subtitle createList__subtitle">Make a list and collab with your friends, I dare you.</h2>
+                        <form className="form createList__form" onSubmit={this.addList} >
                             <div className="createList__section createList__section--name">
-                                <label className="createList__label" htmlFor="listName">Your List Name:</label>
-                                <input className="createList__input" type="text" name="listTitle" onChange={this.handleChange} required  autoComplete="off"/>
+                                <label className="label createList__label createList__label--first" htmlFor="listName">Your List Name:</label>
+                                <input className="input createList__input" type="text" name="listTitle" onChange={this.handleChange} required autoComplete="off"/>
                             </div>
                             <div className="createList__section createList__section--instructions"> 
-                                <label className="createList__label" htmlFor="listInstructions">List instructions:</label>
-                                <input className="createList__input" type="text" name="listInstructions" onChange={this.handleChange}  autoComplete="off"/>
+                                <label className="label createList__label" htmlFor="listInstructions">List Instructions:</label>
+                                <input className="input createList__input" type="text" name="listInstructions" onChange={this.handleChange}  autoComplete="off"/>
                             </div>
-                            <button className="createList__button">Create List</button>
+                            <button className="button createList__button">Create List</button>
                         </form>    
                         
                         <NewListInformation data={this.state} />
