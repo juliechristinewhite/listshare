@@ -25457,7 +25457,7 @@ var App = function (_React$Component) {
                                     { className: 'label createList__label createList__label--first', htmlFor: 'listName' },
                                     'Your List Name:'
                                 ),
-                                _react2.default.createElement('input', { className: 'input createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange, required: true, autoComplete: 'off' })
+                                _react2.default.createElement('input', { className: 'input createList__input', type: 'text', name: 'listTitle', onChange: this.handleChange, placeholder: 'eg. julie\'s potluck', required: true, autoComplete: 'off' })
                             ),
                             _react2.default.createElement(
                                 'div',
@@ -25467,7 +25467,7 @@ var App = function (_React$Component) {
                                     { className: 'label createList__label', htmlFor: 'listInstructions' },
                                     'List Instructions:'
                                 ),
-                                _react2.default.createElement('input', { className: 'input createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange, autoComplete: 'off' })
+                                _react2.default.createElement('input', { className: 'input createList__input', type: 'text', name: 'listInstructions', onChange: this.handleChange, placeholder: 'eg. please post what you are bringing to the potluck!', autoComplete: 'off' })
                             ),
                             _react2.default.createElement(
                                 'button',
@@ -25816,7 +25816,7 @@ var UniqueList = function (_React$Component) {
 											_react2.default.createElement(
 												'div',
 												{ className: 'uniqueList__inputContainer' },
-												_react2.default.createElement('input', { className: 'input uniqueList__input--name', type: 'text', name: 'name', onChange: this.handleChange, value: this.state.name, required: true, autoComplete: 'off', placeholder: 'eg. Julie White' })
+												_react2.default.createElement('input', { className: 'input uniqueList__input--name', type: 'text', name: 'name', onChange: this.handleChange, value: this.state.name, required: true, autoComplete: 'off', placeholder: 'eg. julie white' })
 											)
 										)
 									),

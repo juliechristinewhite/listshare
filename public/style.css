@@ -35,6 +35,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	margin: 0;
 	padding-top: 25px;
 	font-family: 'Catamaran', sans-serif;
+	letter-spacing: 0.5px;
 }
 
 .createList__title {
@@ -52,6 +53,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 .subtitle {
 	padding-bottom: 20px;
 	font-weight: lighter;
+	letter-spacing: 0.5px;
 }
 
 .createList__subtitle {
@@ -69,6 +71,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	font-style: italic;
 	letter-spacing: 1px;
 	font-size: 13px;
+	margin-top: 30px;
 }
 
 /*subtitle end*/
@@ -102,19 +105,16 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 }
 
 .uniqueList__form--item {
-	/*border: 1px solid black;*/
 	display: flex;
 	width: 50%;
 }
 
 .uniqueList__form--name {
-	/*border: 1px solid black;*/
 	display: flex;
 	width: 50%;
 }
 
 .uniqueList__form--notes {
-	/*border: 1px solid black;*/
 	display: flex;
 	width: 100%;
 	margin-top: 20px;
@@ -135,6 +135,10 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	font-size: 20px;
 }
 
+.createList__label--first {
+	margin-right: 21px;
+}
+
 .uniqueList__labelContainer {
 	width: 20%;
 	padding-top: 7px;
@@ -149,12 +153,11 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	padding-top: 7px;
 }
 
-.uniqueList__label--item, .uniqueList__label--name {
+.uniqueList__label--item, .uniqueList__label--name, .uniqueList__label--notes {
 	padding-left: 0;
-}
-
-.uniqueList__label--notes {
-	padding-left: 0;
+	font-weight: lighter;
+	letter-spacing: 1px;
+	font-size: 16px;
 }
 
 /*label end*/
@@ -166,6 +169,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	letter-spacing: 0.5px;
 	font-family: 'Raleway', sans-serif;
 	color: #4B9489;
+	font-weight: lighter;
 }
 
 .createList__input {
@@ -221,12 +225,14 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 .uniqueList__button {
 	margin-top: 20px;
 	margin-bottom: 10px;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .uniqueList__button button {
 	background-color: white;
 	color: rgb(90, 95, 111);
+	letter-spacing: 0.5px;
+	font-size: 20px;
 }
 
 .listItem__remove {
@@ -373,13 +379,15 @@ footer {
 	.uniqueList__form--name, .uniqueList__form--item, .uniqueList__form--notes {
 		flex-direction: column;
 	}
+	.uniqueList__label--name, .uniqueList__label--item, .uniqueList__label--notes {
+		font-weight: lighter;
+	}
 	.uniqueList__labelContainer, .uniqueList__labelContainer--larger  {
 		background-color: #05A8AA;
 		color: white;
 		width: 65px;
 		padding-left: 5px;
 		padding-bottom: 5px;
-		font-weight: bold;
 		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	}
 	.uniqueList__instructions {
@@ -389,8 +397,8 @@ footer {
 
 @media (max-width: 490px) {
 	.uniqueList__formWrapper {
-		padding: 30px;
-		/*width: 90%;*/
+		padding: 20px;
+		/*width: 100%;*/
 	}
 	.listItem__remove {
 		margin-top: 0;
@@ -399,9 +407,8 @@ footer {
 		padding: 10px;
 	}
 	.formContainer {
-		padding: 30px;
+		padding: 20px;
 		margin-top: 0;
-		/*width: 90%;*/
 	}
 	.subtitle {
 		padding: 0 40px;
@@ -415,6 +422,11 @@ footer {
 		padding-right: 30px;
 		padding-left: 30px;
 	}
+	.createList__input {
+		width: 80%;
+		margin-top: 5px;
+	}
+	
 }
 
 /*responsive end*/

@@ -102,7 +102,7 @@ export default class UniqueList extends React.Component {
 												<label className="label uniqueList__label--name" htmlFor="name">Name:</label>
 											</div>
 											<div className="uniqueList__inputContainer">
-												<input className="input uniqueList__input--name" type="text" name="name" onChange={this.handleChange} value={this.state.name} required autoComplete="off" placeholder="eg. Julie White" />
+												<input className="input uniqueList__input--name" type="text" name="name" onChange={this.handleChange} value={this.state.name} required autoComplete="off" placeholder="eg. julie white" />
 											</div>
 
 										</div>

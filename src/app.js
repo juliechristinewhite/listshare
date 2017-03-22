@@ -65,11 +65,11 @@ class App extends React.Component {
                         <form className="form createList__form" onSubmit={this.addList} >
                             <div className="createList__section createList__section--name">
                                 <label className="label createList__label createList__label--first" htmlFor="listName">Your List Name:</label>
-                                <input className="input createList__input" type="text" name="listTitle" onChange={this.handleChange} required autoComplete="off"/>
+                                <input className="input createList__input" type="text" name="listTitle" onChange={this.handleChange} placeholder="eg. julie's potluck" required autoComplete="off"/>
                             </div>
                             <div className="createList__section createList__section--instructions"> 
                                 <label className="label createList__label" htmlFor="listInstructions">List Instructions:</label>
-                                <input className="input createList__input" type="text" name="listInstructions" onChange={this.handleChange}  autoComplete="off"/>
+                                <input className="input createList__input" type="text" name="listInstructions" onChange={this.handleChange} placeholder="eg. please post what you are bringing to the potluck!" autoComplete="off"/>
                             </div>
                             <button className="button createList__button">Create List</button>
                         </form>    
